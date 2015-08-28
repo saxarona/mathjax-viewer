@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MathJax Viewer</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">.btn{margin-top: 7px; display:inline-block;}#inputty, #putty{min-height: 50px;}</style>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>MathJax Viewer <small>Edit &amp; preview</small></h1>
+		</div>
+		<p>Type in an equation in \(LaTeX\) format and press the button (or press Enter). If your syntax is correct, it should show up accordingly on the right.</p>
+		<br>
+		<div id="gooby" class="row">
+			<div id="daffy" class="col-xs-6 col-md-6">
+				<input type="text" id="inputty" class="form-control" placeholder="LaTeX eq.">
+				<button id="butty" class="btn btn-primary pull-right">Go</button>
+			</div>
+			<div class="col-xs-6 col-md-6">
+				<div id="putty"class="well"></div>
+			</div>
+		</div>
+		<footer class="row">
+			<div class="col-xs-6 col-md-6">
+			<h3>Tips</h3>
+				<ul>
+				<li>No need to add <code>\(</code> or <code>\)</code> at the start or end of your equation.</li>
+				<li>Use <code>\left(</code> and <code>\right)</code> to resize parenthesis around a fraction.</li>
+				</ul>
+			</div>
+			<div class="col-xs-6 col-md-6">
+				<h3>Useful Links</h3>
+				<ul>
+					<li><a href="http://www.artofproblemsolving.com/wiki/index.php/LaTeX:Symbols">Symbols in LaTeX</a></li>
+					<li><a href="http://www.artofproblemsolving.com/wiki/index.php/LaTeX:Commands">Math Main Functions</a></li>
+					<li>Contact <a href="mailto:sax@itesm.mx">me</a> if you have a comment or suggestion.</li>
+				</ul>
+			</div>
+
+			<script type="text/javascript">
+			$(document).ready(function(){
+
+				doIt = function(){
+					$("#putty").html("\\(" + $("#inputty").val() + "\\)");
+					MathJax.Hub.Typeset();
+				}
+
+				$("#butty").click(doIt);
+
+				$("#inputty").keypress(function(e){
+					if (e.which == 13) {
+						doIt();
+						return false;
+					}});
+
+			});
+		</script>
+		</footer>
+	</div>
+</body>
+</html>
