@@ -2,6 +2,14 @@
 <html>
 <head>
 	<title>MathJax Viewer</title>
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
+	"HTML-CSS": {
+	  linebreaks: { automatic: true, width: "container" }          
+	}              
+	});
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 	<!-- Latest compiled and minified CSS -->
