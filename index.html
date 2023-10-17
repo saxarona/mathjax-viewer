@@ -60,7 +60,7 @@
 			$(document).ready(function(){
 				let path =  new URL(document.URL)
 				path = path.pathname.split("/");
-				$("#inputty").val(path[1]);
+				$("#inputty").val(path[2]);
 				doIt();
 
 				doIt = function(){
@@ -68,7 +68,7 @@
 					MathJax.Hub.Typeset();
 				}
 				setLocation = function(){
-					window.location = path.origin + '/' + path[0] + '/' + $("#inputty").val()
+					window.location = path.origin + '/' + path[1] + '/' + $("#inputty").val()
 				}
 				$("#butty").click(setLocation);
 
