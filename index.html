@@ -65,7 +65,7 @@
 					MathJax.Hub.Typeset();
 				}
 				
-				setLocation = function(){
+				setLocation = function(doIt){
 					
 					const urlParams = new URLSearchParams(window.location.search);
 
@@ -78,7 +78,7 @@
 				$("#inputty").val(input);
 				doIt();
 				}
-				$("#butty").click(setLocation);
+				$("#butty").click(setLocation(doIt));
 
 				$("#inputty").keypress(function(e){
 					if (e.which == 13) {
