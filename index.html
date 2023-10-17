@@ -58,15 +58,16 @@
 
 			<script type="text/javascript">
 			$(document).ready(function(){
-				let path =  new URL(document.URL)
-				path = path.pathname.split("/");
-				$("#inputty").val(path[2]);
-				doIt();
+			
 
 				doIt = function(){
 					$("#putty").html("\\[" + $("#inputty").val() + "\\]");
 					MathJax.Hub.Typeset();
 				}
+				let path =  new URL(document.URL)
+				path = path.pathname.split("/");
+				$("#inputty").val(path[2]);
+				doIt();
 				setLocation = function(){
 					window.location = path.origin + '/' + path[1] + '/' + $("#inputty").val()
 				}
