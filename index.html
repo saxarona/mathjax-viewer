@@ -77,8 +77,7 @@
 				let path =  new URL(document.URL)
 				let input = path.searchParams.get("input");
 				$("#inputty").val(input);
-				console.log(input)
-				//doIt();
+				doIt();
 				$("#inputty").keypress(function(e){
 					if (e.which == 13) {
 						doIt();
