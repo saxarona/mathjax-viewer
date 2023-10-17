@@ -64,10 +64,7 @@
 					$("#putty").html("\\[" + $("#inputty").val() + "\\]");
 					MathJax.Hub.Typeset();
 				}
-				let path =  new URL(document.URL)
-				let input = path.searchParams.get("input");
-				$("#inputty").val(input);
-				doIt();
+				
 				setLocation = function(){
 					
 					const urlParams = new URLSearchParams(window.location.search);
@@ -75,6 +72,11 @@
 					urlParams.set('input',$("#inputty").val() );
 
 					window.location.search = urlParams;
+
+					let path =  new URL(document.URL)
+				let input = path.searchParams.get("input");
+				$("#inputty").val(input);
+				doIt();
 				}
 				$("#butty").click(setLocation);
 
