@@ -76,7 +76,8 @@
 					let path =  new URL(document.URL)
 				let input = path.searchParams.get("input");
 				$("#inputty").val(input);
-				doIt();
+				console.log(input)
+				//doIt();
 				}
 				$("#butty").click(setLocation(doIt));
 
