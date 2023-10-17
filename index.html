@@ -65,11 +65,16 @@
 					MathJax.Hub.Typeset();
 				}
 				let path =  new URL(document.URL)
-				path = path.pathname.split("/");
-				$("#inputty").val(path[2]);
+				let input = path.searchParams.get("input");
+				$("#inputty").val(input);
 				doIt();
 				setLocation = function(){
-					window.location = path.origin + '/' + path[1] + '/' + $("#inputty").val()
+					
+					const urlParams = new URLSearchParams(window.location.search);
+
+					urlParams.set('input',$("#inputty").val() );
+
+					window.location.search = urlParams;
 				}
 				$("#butty").click(setLocation);
 
