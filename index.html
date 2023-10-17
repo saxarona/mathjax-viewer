@@ -73,17 +73,18 @@
 
 					window.location.search = urlParams;
 				}
-				$("#butty").click(setLocation);
-				let path =  new URL(document.URL)
-				let input = path.searchParams.get("input");
-				$("#inputty").val(input);
-				doIt();
+
 				$("#inputty").keypress(function(e){
 					if (e.which == 13) {
 						setLocation();
 						return false;
 					}});
 
+				$("#butty").click(setLocation);
+				let path =  new URL(document.URL)
+				let input = path.searchParams.get("input");
+				$("#inputty").val(input);
+				doIt();
 			});
 		</script>
 		</footer>
