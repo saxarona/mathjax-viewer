@@ -56,38 +56,39 @@
 				</ul>
 			</div>
 
-			<script type="text/javascript" defer>
-			$(document).ready(function(){
-			
 
-				doIt = function(){
-					$("#putty").html("\\[" + $("#inputty").val() + "\\]");
-					MathJax.Hub.Typeset();
-				}
-				
-				setLocation = function(){
-					
-					const urlParams = new URLSearchParams(window.location.search);
-
-					urlParams.set('input',$("#inputty").val() );
-
-					window.location.search = urlParams;
-				}
-
-				$("#inputty").keypress(function(e){
-					if (e.which == 13) {
-						setLocation();
-						return false;
-					}});
-
-				$("#butty").click(setLocation);
-				let path =  new URL(document.URL)
-				let input = path.searchParams.get("input");
-				$("#inputty").val(input);
-				doIt();
-			});
-		</script>
 		</footer>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		
+
+			doIt = function(){
+				$("#putty").html("\\[" + $("#inputty").val() + "\\]");
+				MathJax.Hub.Typeset();
+			}
+			
+			setLocation = function(){
+				
+				const urlParams = new URLSearchParams(window.location.search);
+
+				urlParams.set('input',$("#inputty").val() );
+
+				window.location.search = urlParams;
+			}
+
+			$("#inputty").keypress(function(e){
+				if (e.which == 13) {
+					setLocation();
+					return false;
+				}});
+
+			$("#butty").click(setLocation);
+			let path =  new URL(document.URL)
+			let input = path.searchParams.get("input");
+			$("#inputty").val(input);
+			doIt();
+		});
+	</script>
 </body>
 </html>
