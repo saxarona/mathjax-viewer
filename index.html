@@ -65,22 +65,20 @@
 					MathJax.Hub.Typeset();
 				}
 				
-				setLocation = function(doIt){
+				setLocation = function(){
 					
 					const urlParams = new URLSearchParams(window.location.search);
 
 					urlParams.set('input',$("#inputty").val() );
 
 					window.location.search = urlParams;
-
-					let path =  new URL(document.URL)
+				}
+				$("#butty").click(setLocation());
+				let path =  new URL(document.URL)
 				let input = path.searchParams.get("input");
 				$("#inputty").val(input);
 				console.log(input)
-				//doIt();
-				}
-				$("#butty").click(setLocation(doIt));
-
+				doIt();
 				$("#inputty").keypress(function(e){
 					if (e.which == 13) {
 						doIt();
