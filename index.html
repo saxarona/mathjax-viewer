@@ -58,13 +58,19 @@
 
 			<script type="text/javascript">
 			$(document).ready(function(){
+				let path =  new URL(document.URL)
+				path = path.pathname.split("/");
+				$("#inputty").val(path[1]);
+				doIt();
 
 				doIt = function(){
 					$("#putty").html("\\[" + $("#inputty").val() + "\\]");
 					MathJax.Hub.Typeset();
 				}
-
-				$("#butty").click(doIt);
+				setLocation = function(){
+					window.location = path.origin + '/' + path[0] + '/' + $("#inputty").val()
+				}
+				$("#butty").click(setLocation);
 
 				$("#inputty").keypress(function(e){
 					if (e.which == 13) {
