@@ -74,7 +74,9 @@
 
 					urlParams.set('input',$("#inputty").val() );
 
-					window.location.search = urlParams;
+					history.replaceState(null, null, '?' + urlParams.toString());
+
+					doIt();
 				}
 
 				$("#inputty").keypress(function(e){
