@@ -20,6 +20,9 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<!-- Polyfill for URL-->
+	<script src="https://cdn.polyfill.io/v3/polyfill.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">.btn{margin-top: 7px; display:inline-block;}#inputty, #putty{min-height: 50px;}</style>
 </head>
@@ -28,7 +31,7 @@
 		<div class="page-header">
 			<h1>MathJax Viewer <small>Edit &amp; preview</small></h1>
 		</div>
-		<p>Type in an equation in \(LaTeX\) format and press the button (or press Enter). If your syntax is correct, it should show up accordingly on the right.</p>
+		<p>Type in an equation in \(LaTeX\) format and press the button (or press Enter). If your syntax is correct, it should show up accordingly on the right. Copy the URL to share.</p>
 		<br>
 		<div id="gooby" class="row">
 			<div id="daffy" class="col-xs-6 col-md-6">
@@ -56,22 +59,39 @@
 				</ul>
 			</div>
 
-			<script type="text/javascript">
+			<script type="text/javascript" >
 			$(document).ready(function(){
+			
 
 				doIt = function(){
 					$("#putty").html("\\[" + $("#inputty").val() + "\\]");
 					MathJax.Hub.Typeset();
 				}
+				
+				setLocation = function(){
+					
+					const urlParams = new URLSearchParams(window.location.search);
 
-				$("#butty").click(doIt);
+					urlParams.set('input',$("#inputty").val() );
+
+					history.replaceState(null, null, '?' + urlParams.toString());
+
+					doIt();
+				}
 
 				$("#inputty").keypress(function(e){
 					if (e.which == 13) {
-						doIt();
+						setLocation();
 						return false;
 					}});
-
+					window.onload = function() {
+						$("#butty").click(setLocation);
+				let path =  new URL(document.URL)
+				let input = path.searchParams.get("input");
+				$("#inputty").val(input);
+				doIt();
+			};
+				
 			});
 		</script>
 		</footer>
