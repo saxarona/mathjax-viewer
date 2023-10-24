@@ -9,9 +9,23 @@
 	  linebreaks: { automatic: true, width: "container" }          
 	}              
 	}); */
-	MathJax = {	tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }};
+	window.MathJax = {
+  tex: {
+    inlineMath: [["$","$"],["\\(","\\)"]],
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
 	</script>
 	<script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -26,7 +40,7 @@
 	
 	<!-- Polyfill for URL-->
 	<script src="https://cdn.polyfill.io/v3/polyfill.min.js"></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">.btn{margin-top: 7px; display:inline-block;}#inputty, #putty{min-height: 50px;}</style>
