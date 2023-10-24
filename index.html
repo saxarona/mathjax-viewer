@@ -93,14 +93,14 @@
 				}
 				
 				setLocation = function(){
-					
+										doIt();
+
 					const urlParams = new URLSearchParams(window.location.search);
 
 					urlParams.set('input',$("#inputty").val() );
 
 					history.replaceState(null, null, '?' + urlParams.toString());
 
-					doIt();
 				}
 
 			
